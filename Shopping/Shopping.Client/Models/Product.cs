@@ -2,11 +2,11 @@
 {
     public class Product
     {
-        public string Id { get; internal set; }
-        public string Name { get; internal set; }
-        public string Category { get; internal set; }
-        public string Description { get; internal set; }
-        public string ImageFile { get; internal set; }
-        public decimal Price { get; internal set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Category { get; set; }
+        public string Description { get; set; }
+        public string ImageFile { get; set; }
+        public decimal Price { get; set; }
     }
 }
