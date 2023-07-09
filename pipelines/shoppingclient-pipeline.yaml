@@ -6,6 +6,7 @@ trigger:
       include:
       - Shopping/Shopping.Client/*
       - aks/shoppingclient.yaml
+      - pipelines/shoppingclient-pipeline.yaml
 
 resources:
 - repo: self

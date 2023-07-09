@@ -6,6 +6,7 @@ trigger:
       include:
       - Shopping/Shopping.API/*
       - aks/shoppingapi.yaml
+      - pipelines/shoppingapi-pipeline.yaml
 
 resources:
 - repo: self
