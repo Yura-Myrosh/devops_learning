@@ -1,26 +1,23 @@
-# Deploy to Azure Kubernetes Service
-# Build and push image to Azure Container Registry; Deploy to Azure Kubernetes Service
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
 trigger:
-- master
+    branches:
+      include:
+      - main
+    path:
+      include:
+      - Shopping/Shopping.API/*
+      - aks/shoppingapi.yaml
 
 resources:
 - repo: self
 
 variables:
-
-  # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'fd65c58c-f65e-48ad-8b83-3c18ce4002fc'
   imageRepository: 'shoppingapi'
   containerRegistry: 'shoppingacrlearning.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'shoppingacrlearning299700a5-auth'
-
-  # Agent VM image name
   vmImageName: 'ubuntu-latest'
-
 
 stages:
 - stage: Build
@@ -42,8 +39,8 @@ stages:
         tags: |
           $(tag)
 
-    - upload: manifests
-      artifact: manifests
+    - upload: aks
+      artifact: aks
 
 - stage: Deploy
   displayName: Deploy stage
@@ -71,7 +68,7 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(Pipeline.Workspace)/manifests/shoppingapi.yaml
+                $(Pipeline.Workspace)/aks/shoppingapi.yaml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
