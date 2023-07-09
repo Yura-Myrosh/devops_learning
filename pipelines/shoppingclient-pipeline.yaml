@@ -14,7 +14,7 @@ variables:
   dockerRegistryServiceConnection: 'fd65c58c-f65e-48ad-8b83-3c18ce4002fc'
   imageRepository: 'shoppingclient'
   containerRegistry: 'shoppingacrlearning.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
+  dockerfilePath: 'Shopping/Shopping.Client/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'shoppingacrlearning299700a5-auth'
   vmImageName: 'ubuntu-latest'
